@@ -13,7 +13,7 @@
 ---
 
 ### 현재백준랭크
-![Bronze 5](https://img.shields.io/badge/Bronze%205-AD5600?style=flat&logo=codeforces&logoColor=white)
+![Bronze 4](https://img.shields.io/badge/Bronze%204-AD5600?style=flat&logo=codeforces&logoColor=white)
 
 ---
 
