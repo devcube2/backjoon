@@ -1,4 +1,4 @@
-### 백준 문제풀이
+### 백준문제풀이
   백준 알고리즘 공부 사이트(https://www.acmicpc.net) 문제풀이결과 저장소입니다. <br>
 
   문제 풀이를 마치면 결과는 자동 커밋된 결과들입니다.
@@ -12,8 +12,8 @@
 
 ---
 
-### 현재백준랭크
-![Bronze 4](https://img.shields.io/badge/Bronze%204-AD5600?style=flat&logo=codeforces&logoColor=white)
+### 현재백준티어
+![Bronze 3](https://img.shields.io/badge/Bronze%203-AD5600?style=flat&logo=codeforces&logoColor=white)
 
 ---
 
