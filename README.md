@@ -12,7 +12,7 @@
 ---
 
 ### 현재백준티어
-![Bronze 3](https://img.shields.io/badge/Bronze%203-AD5600?style=flat&logo=codeforces&logoColor=white)
+![Bronze 2](https://img.shields.io/badge/Bronze%202-AD5600?style=flat&logo=codeforces&logoColor=white)
 
 ---
 
