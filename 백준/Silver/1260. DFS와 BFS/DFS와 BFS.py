@@ -19,24 +19,27 @@ dfs_graph = {key: sorted(value, reverse=True) for key, value in graph.items()}
 bfs_graph = {key: sorted(value) for key, value in graph.items()}
 
 def dfs(graph, start):
-    visit, visited = [start], []
+    visit, visited, result = deque([start]), set(), []
 
     while visit:
         node = visit.pop()
         if node not in visited:
-            visited.append(node)
-            visit.extend(graph.get(node, [])) # 정점만 있고 간선이 없는 경우 KeyError 방지, 그냥 graph[node] 를 하면 value 가 없어서 KeyError 발생
-    return visited
+            visited.add(node)
+            result.append(node)
+            visit.extend(
+                graph.get(node, []))  # 정점만 있고 간선이 없는 경우 KeyError 방지, 그냥 graph[node] 를 하면 value 가 없어서 KeyError 발생
+    return result
 
 def bfs(graph, start):
-    visit, visited = deque([start]), []
+    visit, visited, result = deque([start]), set(), []
 
     while visit:
         node = visit.popleft()
         if node not in visited:
-            visited.append(node)
+            visited.add(node)
+            result.append(node)
             visit.extend(graph.get(node, [])) # 정점만 있고 간선이 없는 경우 KeyError 방지, 그냥 graph[node] 를 하면 value 가 없어서 KeyError 발생
-    return visited
+    return result
 
 print(*dfs(dfs_graph, V))
 print(*bfs(bfs_graph, V))
