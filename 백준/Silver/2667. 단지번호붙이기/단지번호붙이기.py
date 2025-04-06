@@ -14,8 +14,7 @@ y_max = len(dan_ji_map)
 
 # 한 단지를 걸으며 집의 수를 조사 한다.
 def walk(x, y):
-    visit = [(x, y)]
-    visit.append((x, y))
+    visit = [(x, y)]    
 
     result = 0
     while visit:
