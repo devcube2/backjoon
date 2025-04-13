@@ -15,5 +15,5 @@ while N >= 0:
     # 3kg 빼고, 1봉지 더함
     N -= 3
     answer += 1
-else:
+else: # 정답 찾지 못하고 루프 종료시
     print(-1)
