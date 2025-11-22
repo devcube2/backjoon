@@ -1,11 +1,18 @@
 def solution(N, stages):
-    result = {}
-    denominator = len(stages)
-    for stage in range(1, N+1):
-        if denominator != 0:
-            count = stages.count(stage)
-            result[stage] = count / denominator
-            denominator -= count
+    challenger = [0] * (N + 2)
+    for stage in stages:
+        challenger[stage] += 1
+    
+    fails = {}
+    total = len(stages)
+    
+    for i in range(1, N+1):
+        if challenger[i] == 0:
+            fails[i] = 0
         else:
-            result[stage] = 0
-    return sorted(result, key=lambda x : result[x], reverse=True)
+            fails[i] = challenger[i] / total
+            total -= challenger[i]
+    
+    result = sorted(fails, key=lambda x : fails[x], reverse=True)
+    
+    return result
