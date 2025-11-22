@@ -8,7 +8,7 @@ def solution(N, stages):
     
     for i in range(1, N+1):
         if challenger[i] == 0:
-            fails[i] = 0
+            fails[i] = 0            
         else:
             fails[i] = challenger[i] / total
             total -= challenger[i]
