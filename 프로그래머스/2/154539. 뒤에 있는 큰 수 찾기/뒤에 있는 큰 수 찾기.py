@@ -3,7 +3,6 @@ def solution(numbers):
     stack = []
     for i, number in enumerate(numbers):
         while stack and numbers[stack[-1]] < number:
-            answer[stack[-1]] = number
-            stack.pop()
+            answer[stack.pop()] = number            
         stack.append(i)
     return answer
