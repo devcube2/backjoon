@@ -1,27 +1,23 @@
 from collections import defaultdict
 
 def solution(genres, plays):
-    # 각 장르별 총 재생횟수 
-    genr_count = defaultdict(int)
-    for genr, play in zip(genres, plays):
-        genr_count[genr] += play
-    genr_count = sorted(genr_count.items(), key=lambda x: x[1], reverse=True)    
+    # 1. 장르별 총 재생 횟수 및 곡 정보 수집
+    genre_total = defaultdict(int)
+    genre_songs = defaultdict(list)
     
-    # 각 장르별 노래 저장
-    genr_list = defaultdict(list)
-    for i, (genr, play) in enumerate(zip(genres, plays)):
-        genr_list[genr].append([play, i])
+    for i, (g, p) in enumerate(zip(genres, plays)):
+        genre_total[g] += p
+        genre_songs[g].append((p, i)) # 튜플로 저장
         
-    # 각 장르별 노래 재생 횟수 오름차순 정렬(pop 할거라)
-    for key in genr_list.keys():
-        genr_list[key].sort(key=lambda x: (x[0], -x[1]))
+    # 2. 많이 재생된 장르 순서대로 정렬
+    sorted_genres = sorted(genre_total.keys(), key=lambda g: genre_total[g], reverse=True)
     
     answer = []
-    # 가장 재생이 많이된 장르부터 시작됨
-    for genr, _ in genr_count:
-        # 최대 2곡
-        for _ in range(2):
-            # 1곡만 있을지도
-            if genr_list[genr]:
-                answer.append(genr_list[genr].pop()[1])    
+    # 3. 각 장르 내에서 베스트 곡 선정
+    for g in sorted_genres:
+        # 재생 횟수 내림차순, 인덱스 오름차순으로 정렬
+        songs = sorted(genre_songs[g], key=lambda x: (-x[0], x[1]))
+        # 최대 2곡 추출
+        answer.extend([idx for _, idx in songs[:2]])
+        
     return answer
