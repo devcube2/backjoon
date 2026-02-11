@@ -10,15 +10,16 @@ grid = [read().strip() for _ in range(rows)]
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
-def bfs(grid, visited, blindnees):
+def bfs(grid, blindness):
     area = 0
+    visited = [[False] * cols for _ in range(rows)]
     for i in range(rows):
         for j in range(cols):
             if not visited[i][j]:
                 # 현재 컬러 지정
                 color = grid[i][j]
                 # 색맹이면 RG 를 같은 컬러로 한다.
-                if (color == 'R' or color == 'G') and blindnees:
+                if color in 'RG' and blindness:
                     color = 'RG'
                 visited[i][j] = True
                 queue = deque([(i, j)])
@@ -39,9 +40,6 @@ def bfs(grid, visited, blindnees):
     return area
 
 # 일반인
-visited = [[False] * cols for _ in range(rows)]
-print(bfs(grid, visited, False))
-
+print(bfs(grid, False))
 # 색맹
-visited = [[False] * cols for _ in range(rows)]
-print(bfs(grid, visited, True))
+print(bfs(grid, True))
