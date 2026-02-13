@@ -2,19 +2,21 @@ import sys
 from collections import deque
 
 read = sys.stdin.readline
-
 N, K = map(int, read().split())
 
-level = 0
-visited = set()
-queue = deque([(N, level)])
-while queue:
-    node, level = queue.popleft()
-    if node == K:
-        print(level)
-        break
+MAX = 100000
+dist = [-1] * (MAX + 1)  # -1은 미방문, 0 이상의 값은 도달 시간
+dist[N] = 0
+queue = deque([N])
 
-    for next_node in [node - 1, node + 1, node * 2]:
-        if 0 <= next_node <= 100000 and next_node not in visited:
-            queue.append((next_node, level + 1))
-            visited.add(next_node)
+while queue:
+    curr = queue.popleft()
+    
+    if curr == K:
+        print(dist[curr])
+        break
+        
+    for next_node in (curr - 1, curr + 1, curr * 2):
+        if 0 <= next_node <= MAX and dist[next_node] == -1:
+            dist[next_node] = dist[curr] + 1
+            queue.append(next_node)
